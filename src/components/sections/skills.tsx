@@ -18,14 +18,14 @@ const skillsData = [
     skills: ['SQL', 'Excel', 'Power BI', 'Agile Methodology'],
   },
   {
-    category: 'Programming & Web',
+    category: 'Programming & Web Development',
     icon: Code,
-    skills: ['HTML', 'CSS', 'PHP', 'Python', 'C'],
+    skills: ['HTML', 'CSS', 'JavaScript', 'PHP', 'Python', 'C', 'Website development'],
   },
   {
-    category: 'Creative & Emerging Skills',
+    category: 'Creative & Strategic Skills',
     icon: BrainCircuit,
-    skills: ['Writing', 'Simple Graphic Design', 'AI-driven solutions', 'Website development'],
+    skills: ['AI-driven solutions', 'Writing', 'Simple Graphic Design'],
   },
 ];
 
