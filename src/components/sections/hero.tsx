@@ -18,7 +18,7 @@ export default function HeroSection() {
                 alt={profileImage.description}
                 fill
                 priority
-                className="rounded-full object-cover shadow-2xl"
+                className="rounded-full object-cover object-top shadow-2xl"
                 data-ai-hint={profileImage.imageHint}
               />
               <div className="absolute inset-0 rounded-full border-4 border-primary/20" />
