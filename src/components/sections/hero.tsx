@@ -16,8 +16,7 @@ export default function HeroSection() {
               <Image
                 src={profileImage.imageUrl}
                 alt={profileImage.description}
-                width={400}
-                height={400}
+                fill
                 priority
                 className="rounded-full object-cover shadow-2xl"
                 data-ai-hint={profileImage.imageHint}
