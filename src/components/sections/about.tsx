@@ -49,7 +49,7 @@ export default function AboutSection() {
           </div>
 
           <div className="space-y-8">
-            <Card className="h-full transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+            <Card className="h-full transition-shadow duration-300 hover:shadow-xl">
               <CardHeader className="flex flex-row items-center gap-4">
                 <aboutData.education.icon className="h-8 w-8 text-primary" />
                 <CardTitle className="font-headline text-xl">
@@ -63,7 +63,7 @@ export default function AboutSection() {
               </CardContent>
             </Card>
             
-            <Card className="h-full transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+            <Card className="h-full transition-shadow duration-300 hover:shadow-xl">
               <CardHeader className="flex flex-row items-center gap-4">
                 <aboutData.mindset.icon className="h-8 w-8 text-accent" />
                 <CardTitle className="font-headline text-xl">
