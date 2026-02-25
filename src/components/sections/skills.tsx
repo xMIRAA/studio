@@ -1,0 +1,84 @@
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  AreaChart,
+  BrainCircuit,
+  Code,
+  Database,
+  FileSpreadsheet,
+  Globe2,
+  IterationCw,
+  Palette,
+  PenSquare,
+} from 'lucide-react';
+
+const skillsData = [
+  {
+    category: 'Data & Business Tools',
+    icon: Database,
+    skills: ['SQL', 'Excel', 'Power BI', 'Agile Methodology'],
+  },
+  {
+    category: 'Programming & Web',
+    icon: Code,
+    skills: ['HTML', 'CSS', 'PHP', 'Python', 'C'],
+  },
+  {
+    category: 'Creative & Emerging Skills',
+    icon: BrainCircuit,
+    skills: ['Writing', 'Simple Graphic Design', 'AI-driven solutions', 'Website development'],
+  },
+];
+
+const skillIcons: { [key: string]: React.ElementType } = {
+  'SQL': Database,
+  'Excel': FileSpreadsheet,
+  'Power BI': AreaChart,
+  'Agile Methodology': IterationCw,
+  'Website development': Globe2,
+  'AI-driven solutions': BrainCircuit,
+  'Writing': PenSquare,
+  'Simple Graphic Design': Palette,
+};
+
+export default function SkillsSection() {
+  return (
+    <section id="skills" className="py-20 md:py-32">
+      <div className="container mx-auto px-4">
+        <div className="text-center">
+          <h2 className="font-headline text-3xl font-bold md:text-4xl">
+            My Skill Set
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
+            A versatile collection of technical, analytical, and creative skills I've been developing.
+          </p>
+        </div>
+
+        <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {skillsData.map((category) => (
+            <Card key={category.category} className="flex flex-col transform-gpu transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+              <CardHeader className="flex-row items-center gap-4 pb-4">
+                <category.icon className="h-10 w-10 text-primary" />
+                <CardTitle className="font-headline text-xl">
+                  {category.category}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="flex-grow">
+                <ul className="space-y-3">
+                  {category.skills.map((skill) => {
+                    const Icon = skillIcons[skill] || Code;
+                    return (
+                      <li key={skill} className="flex items-center gap-3">
+                        <Icon className="h-5 w-5 text-accent" />
+                        <span>{skill}</span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
