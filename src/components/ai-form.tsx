@@ -2,9 +2,9 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { useFormState, useFormStatus } from 'react-dom';
+import { useFormStatus } from 'react-dom';
 import * as z from 'zod';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useActionState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -43,7 +43,7 @@ function SubmitButton() {
 }
 
 export default function AiForm() {
-  const [state, formAction] = useFormState(getAiSolution, {
+  const [state, formAction] = useActionState(getAiSolution, {
     solutionConcept: '',
     error: '',
   });
