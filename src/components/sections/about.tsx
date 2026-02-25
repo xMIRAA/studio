@@ -1,6 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { BrainCircuit, GraduationCap, TrendingUp } from 'lucide-react';
-import { Separator } from '@/components/ui/separator';
 
 const aboutData = {
   education: {
@@ -49,8 +48,8 @@ export default function AboutSection() {
             </Card>
           </div>
 
-          <div>
-            <Card className="h-full transition-shadow duration-300 hover:shadow-xl">
+          <div className="space-y-8">
+            <Card>
               <CardHeader className="flex flex-row items-center gap-4">
                 <aboutData.education.icon className="h-8 w-8 text-primary" />
                 <CardTitle className="font-headline text-xl">
@@ -59,25 +58,31 @@ export default function AboutSection() {
               </CardHeader>
               <CardContent>
                 <p className="font-semibold">{aboutData.education.degree}</p>
-                <p className="text-muted-foreground">{aboutData.education.university}</p>
-                <p className="text-sm text-muted-foreground">{aboutData.education.graduation}</p>
-                <Separator className="my-4" />
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3">
-                    <aboutData.mindset.icon className="h-6 w-6 text-primary" />
-                    <h4 className="font-headline text-lg font-semibold">
-                      {aboutData.mindset.title}
-                    </h4>
-                  </div>
-                  <ul className="space-y-2 pl-1">
-                    {aboutData.mindset.points.map((point, index) => (
-                      <li key={index} className="flex items-center gap-2">
-                        <TrendingUp className="h-4 w-4 text-accent" />
-                        <span className="text-muted-foreground">{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <p className="text-muted-foreground">
+                  {aboutData.education.university}
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  {aboutData.education.graduation}
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader className="flex flex-row items-center gap-4">
+                <aboutData.mindset.icon className="h-8 w-8 text-primary" />
+                <CardTitle className="font-headline text-xl">
+                  {aboutData.mindset.title}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 pl-1">
+                  {aboutData.mindset.points.map((point, index) => (
+                    <li key={index} className="flex items-center gap-2">
+                      <TrendingUp className="h-4 w-4 text-accent" />
+                      <span className="text-muted-foreground">{point}</span>
+                    </li>
+                  ))}
+                </ul>
               </CardContent>
             </Card>
           </div>
