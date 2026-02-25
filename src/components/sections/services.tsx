@@ -1,11 +1,11 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { BrainCircuit, Code, LineChart, Pen, Search } from 'lucide-react';
+import { Bot, Laptop, LineChart, Paintbrush2, Pen } from 'lucide-react';
 import AiForm from '@/components/ai-form';
 
 const servicesData = [
   {
     title: 'Website Development',
-    icon: Code,
+    icon: Laptop,
     description: 'Basic to intermediate web solutions using modern technologies.',
   },
   {
@@ -20,7 +20,7 @@ const servicesData = [
   },
   {
     title: 'Simple Graphic Design',
-    icon: Search,
+    icon: Paintbrush2,
     description: 'Clean and simple graphics for web and content needs.',
   },
 ];
@@ -57,7 +57,7 @@ export default function ServicesSection() {
           <Card className="overflow-hidden bg-gradient-to-br from-primary/5 to-accent/5">
             <div className="grid md:grid-cols-2">
               <div className="flex flex-col justify-center p-8 md:p-12">
-                <BrainCircuit className="h-12 w-12 text-primary" />
+                <Bot className="h-12 w-12 text-primary" />
                 <h3 className="mt-4 font-headline text-2xl font-bold">
                   AI Business Consultation
                 </h3>

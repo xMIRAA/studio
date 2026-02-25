@@ -1,14 +1,21 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   AreaChart,
-  BrainCircuit,
+  Binary,
+  Braces,
   Code,
+  CodeXml,
   Database,
+  FileCode,
   FileSpreadsheet,
   Globe2,
   IterationCw,
+  Lightbulb,
   Palette,
+  Paintbrush,
   PenSquare,
+  Server,
+  Sparkles,
 } from 'lucide-react';
 
 const skillsData = [
@@ -24,7 +31,7 @@ const skillsData = [
   },
   {
     category: 'Creative & Strategic Skills',
-    icon: BrainCircuit,
+    icon: Lightbulb,
     skills: ['AI-driven solutions', 'Writing', 'Simple Graphic Design'],
   },
 ];
@@ -34,8 +41,14 @@ const skillIcons: { [key: string]: React.ElementType } = {
   'Excel': FileSpreadsheet,
   'Power BI': AreaChart,
   'Agile Methodology': IterationCw,
+  'HTML': FileCode,
+  'CSS': Paintbrush,
+  'JavaScript': Braces,
+  'PHP': Server,
+  'Python': CodeXml,
+  'C': Binary,
   'Website development': Globe2,
-  'AI-driven solutions': BrainCircuit,
+  'AI-driven solutions': Sparkles,
   'Writing': PenSquare,
   'Simple Graphic Design': Palette,
 };
