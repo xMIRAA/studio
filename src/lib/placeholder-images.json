@@ -14,9 +14,9 @@
     },
     {
       "id": "vehicle-service-project",
-      "description": "Screenshot of a vehicle service station dashboard",
-      "imageUrl": "https://images.unsplash.com/photo-1631093441315-a06b9bcbe63f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxkYXNoYm9hcmQlMjB1aXxlbnwwfHx8fDE3NzE4NjgwNzZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "dashboard ui"
+      "description": "A mechanic working on a car in a service station",
+      "imageUrl": "https://images.unsplash.com/photo-1581403341634-b9d3b48f9a4c?q=80&w=1080",
+      "imageHint": "car service"
     }
   ]
 }
