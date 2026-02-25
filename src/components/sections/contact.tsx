@@ -3,6 +3,8 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
+import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -17,7 +19,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { Card, CardContent } from '../ui/card';
-import { Linkedin, Mail, Phone } from 'lucide-react';
+import { Linkedin, Mail, Phone, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 
 const formSchema = z.object({
@@ -52,6 +54,7 @@ const contactDetails = [
 
 export default function ContactSection() {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -63,12 +66,41 @@ export default function ContactSection() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    toast({
-      title: 'Message Sent!',
-      description: "Thank you for reaching out. I'll get back to you soon.",
-    });
-    form.reset();
+    setIsSubmitting(true);
+
+    const serviceId = 'service_ztpxmsv';
+    const templateId = 'template_b1e1h8j';
+    const publicKey = 'YVYGsZgsgQyMYr9bM';
+
+    const templateParams = {
+      from_name: values.name,
+      from_email: values.email,
+      message: values.message,
+    };
+
+    emailjs
+      .send(serviceId, templateId, templateParams, publicKey)
+      .then(
+        (response) => {
+          console.log('SUCCESS!', response.status, response.text);
+          toast({
+            title: 'Message Sent!',
+            description: "Thank you for reaching out. I'll get back to you soon.",
+          });
+          form.reset();
+        },
+        (error) => {
+          console.error('FAILED...', error);
+          toast({
+            variant: 'destructive',
+            title: 'Uh oh! Something went wrong.',
+            description: 'There was a problem sending your message. Please try again.',
+          });
+        }
+      )
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   }
 
   return (
@@ -148,8 +180,15 @@ export default function ContactSection() {
                       </FormItem>
                     )}
                   />
-                  <Button type="submit" size="lg" className="w-full" suppressHydrationWarning>
-                    Send Message
+                  <Button type="submit" size="lg" className="w-full" disabled={isSubmitting} suppressHydrationWarning>
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      'Send Message'
+                    )}
                   </Button>
                 </form>
               </Form>
