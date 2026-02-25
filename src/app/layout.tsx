@@ -3,7 +3,7 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: "Mirsadh's Horizon | Aspiring Business & Data Analyst",
+  title: "Mirsadh | Aspiring Business & Data Analyst",
   description:
     'Portfolio of Mohomed Mirsadh, an Information Systems undergraduate at the University of Colombo School of Computing.',
 };
