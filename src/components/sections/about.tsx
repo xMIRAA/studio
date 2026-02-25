@@ -1,17 +1,14 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { GraduationCap, Lightbulb, TrendingUp } from 'lucide-react';
+import { GraduationCap, TrendingUp } from 'lucide-react';
+import { Separator } from '@/components/ui/separator';
 
 const aboutData = {
   education: {
-    title: 'Education',
+    title: 'Education & Mindset',
     icon: GraduationCap,
     degree: 'Bachelor of Science in Information Systems',
     university: 'University of Colombo School of Computing',
     graduation: 'Expected Graduation: 2030',
-  },
-  mindset: {
-    title: 'Mindset',
-    icon: Lightbulb,
     points: ['Continuous Learning', 'Adaptability', 'Growth-Oriented'],
   },
 };
@@ -48,7 +45,7 @@ export default function AboutSection() {
             </Card>
           </div>
 
-          <div className="space-y-8">
+          <div>
             <Card className="h-full transition-shadow duration-300 hover:shadow-xl">
               <CardHeader className="flex flex-row items-center gap-4">
                 <aboutData.education.icon className="h-8 w-8 text-primary" />
@@ -60,19 +57,9 @@ export default function AboutSection() {
                 <p className="font-semibold">{aboutData.education.degree}</p>
                 <p className="text-muted-foreground">{aboutData.education.university}</p>
                 <p className="text-sm text-muted-foreground">{aboutData.education.graduation}</p>
-              </CardContent>
-            </Card>
-            
-            <Card className="h-full transition-shadow duration-300 hover:shadow-xl">
-              <CardHeader className="flex flex-row items-center gap-4">
-                <aboutData.mindset.icon className="h-8 w-8 text-accent" />
-                <CardTitle className="font-headline text-xl">
-                  {aboutData.mindset.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
+                <Separator className="my-4" />
                 <ul className="space-y-2">
-                  {aboutData.mindset.points.map((point, index) => (
+                  {aboutData.education.points.map((point, index) => (
                     <li key={index} className="flex items-center gap-2">
                       <TrendingUp className="h-4 w-4 text-accent" />
                       <span className="text-muted-foreground">{point}</span>
