@@ -29,7 +29,7 @@ const formSchema = z.object({
 function SubmitButton() {
   const { pending } = useFormStatus();
   return (
-    <Button type="submit" disabled={pending} className="w-full">
+    <Button type="submit" disabled={pending} className="w-full" suppressHydrationWarning>
       {pending ? (
         <>
           <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -79,6 +79,7 @@ export default function AiForm() {
                     placeholder="e.g., 'High customer churn rate in our subscription service'"
                     className="min-h-[100px] bg-background"
                     {...field}
+                    suppressHydrationWarning
                   />
                 </FormControl>
                 <FormMessage />

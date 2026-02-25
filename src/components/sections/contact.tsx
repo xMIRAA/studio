@@ -111,7 +111,7 @@ export default function ContactSection() {
                       <FormItem>
                         <FormLabel>Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="Your Name" {...field} />
+                          <Input placeholder="Your Name" {...field} suppressHydrationWarning />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -124,7 +124,7 @@ export default function ContactSection() {
                       <FormItem>
                         <FormLabel>Email</FormLabel>
                         <FormControl>
-                          <Input placeholder="your.email@example.com" {...field} />
+                          <Input placeholder="your.email@example.com" {...field} suppressHydrationWarning />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -141,13 +141,14 @@ export default function ContactSection() {
                             placeholder="Tell me how I can help."
                             className="min-h-[120px]"
                             {...field}
+                            suppressHydrationWarning
                           />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                  <Button type="submit" size="lg" className="w-full">
+                  <Button type="submit" size="lg" className="w-full" suppressHydrationWarning>
                     Send Message
                   </Button>
                 </form>
