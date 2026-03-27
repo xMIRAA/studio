@@ -29,57 +29,63 @@ export default function AboutSection() {
           </p>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          <div className="lg:col-span-2">
-            <Card className="h-full border-none bg-transparent shadow-none">
-              <CardHeader>
-                <CardTitle className="font-headline text-2xl">
-                  My Journey & Aspirations
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4 text-muted-foreground">
-                <p>
-                  As an undergraduate at the prestigious University of Colombo School of Computing, I am deeply immersed in the world of Information Systems. My studies have ignited a strong passion for roles where I can leverage technology to solve real-world business challenges.
-                </p>
-                <p>
-                  I am particularly drawn to Business Analysis, Management IT, and Data Analytics. My goal is to build a career where I can bridge the gap between technical teams and business stakeholders, using data-driven insights to inform strategy and drive meaningful growth. I am excited by the prospect of transforming raw data into compelling stories that guide decision-making.
-                </p>
-              </CardContent>
-            </Card>
+        <div className="mt-16 flex flex-col gap-16">
+          {/* Journey Section */}
+          <div className="mx-auto max-w-3xl text-center">
+            <h3 className="font-headline text-2xl font-bold md:text-3xl mb-6">
+              My Journey & Aspirations
+            </h3>
+            <div className="space-y-6 text-muted-foreground md:text-lg leading-relaxed">
+              <p>
+                As an undergraduate at the prestigious University of Colombo School of Computing, I am deeply immersed in the world of Information Systems. My studies have ignited a strong passion for roles where I can leverage technology to solve real-world business challenges.
+              </p>
+              <p>
+                I am particularly drawn to Business Analysis, Management IT, and Data Analytics. My goal is to build a career where I can bridge the gap between technical teams and business stakeholders, using data-driven insights to inform strategy and drive meaningful growth. I am excited by the prospect of transforming raw data into compelling stories that guide decision-making.
+              </p>
+            </div>
           </div>
 
-          <div className="space-y-8">
-            <Card>
-              <CardHeader className="flex flex-row items-center gap-4">
-                <aboutData.education.icon className="h-8 w-8 text-primary" />
+          {/* Education and Mindset Cards */}
+          <div className="mx-auto grid w-full max-w-5xl grid-cols-1 gap-8 md:grid-cols-2">
+            {/* Education Card */}
+            <Card className="group flex h-full flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-primary/50">
+              <CardHeader className="flex flex-row items-center gap-4 bg-muted/50 pb-6">
+                <div className="rounded-full bg-primary/10 p-3 transition-colors duration-300 group-hover:bg-primary/20">
+                  <aboutData.education.icon className="h-8 w-8 text-primary" />
+                </div>
                 <CardTitle className="font-headline text-xl">
                   {aboutData.education.title}
                 </CardTitle>
               </CardHeader>
-              <CardContent>
-                <p className="font-semibold">{aboutData.education.degree}</p>
-                <p className="text-muted-foreground">
+              <CardContent className="flex-grow pt-6">
+                <p className="font-semibold text-foreground md:text-lg">{aboutData.education.degree}</p>
+                <p className="mt-2 text-muted-foreground">
                   {aboutData.education.university}
                 </p>
-                <p className="text-sm text-muted-foreground">
+                <p className="mt-4 text-sm font-medium text-primary">
                   {aboutData.education.graduation}
                 </p>
               </CardContent>
             </Card>
 
-            <Card>
-              <CardHeader className="flex flex-row items-center gap-4">
-                <aboutData.mindset.icon className="h-8 w-8 text-primary" />
+            {/* Mindset Card */}
+            <Card className="group flex h-full flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-primary/50">
+              <CardHeader className="flex flex-row items-center gap-4 bg-muted/50 pb-6">
+                <div className="rounded-full bg-primary/10 p-3 transition-colors duration-300 group-hover:bg-primary/20">
+                  <aboutData.mindset.icon className="h-8 w-8 text-primary" />
+                </div>
                 <CardTitle className="font-headline text-xl">
                   {aboutData.mindset.title}
                 </CardTitle>
               </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 pl-1">
+              <CardContent className="flex-grow pt-6">
+                <ul className="space-y-4 pl-1">
                   {aboutData.mindset.points.map((point, index) => (
-                    <li key={index} className="flex items-center gap-2">
-                      <TrendingUp className="h-4 w-4 text-accent" />
-                      <span className="text-muted-foreground">{point}</span>
+                    <li key={index} className="flex items-center gap-3">
+                      <div className="rounded-full bg-accent/20 p-1">
+                        <TrendingUp className="h-4 w-4 text-accent" />
+                      </div>
+                      <span className="text-muted-foreground font-medium">{point}</span>
                     </li>
                   ))}
                 </ul>

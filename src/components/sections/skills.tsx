@@ -57,18 +57,18 @@ export default function SkillsSection() {
   return (
     <section id="skills" className="py-20 md:py-32">
       <div className="container mx-auto px-4">
-        <div className="text-center">
-          <h2 className="font-headline text-3xl font-bold md:text-4xl">
+        <div className="mx-auto max-w-3xl text-center mb-16">
+          <h2 className="font-headline text-3xl font-bold md:text-4xl mb-6">
             My Skill Set
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
+          <p className="text-muted-foreground md:text-lg leading-relaxed">
             A versatile collection of technical, analytical, and creative skills I've been developing.
           </p>
         </div>
 
         <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {skillsData.map((category) => (
-            <Card key={category.category} className="flex flex-col transform-gpu transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+            <Card key={category.category} className="group flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-primary/50">
               <CardHeader className="flex-row items-center gap-4 pb-4">
                 <category.icon className="h-10 w-10 text-primary" />
                 <CardTitle className="font-headline text-xl">

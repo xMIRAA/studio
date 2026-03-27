@@ -5,17 +5,26 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const projectsData = [
   {
-    title: 'Hotel Reservation Website',
-    description: 'A web-based system for managing hotel bookings. Features reservation handling, a user-friendly interface, and basic backend logic, focusing on usability and functional workflows.',
-    techStack: ['HTML', 'CSS', 'PHP', 'JavaScript'],
-    imageId: 'hotel-project',
+    title: 'Splitgather',
+    description: 'A web application with a frontend and a backend API, built for collaborative sharing and gathering.',
+    techStack: ['JavaScript', 'HTML', 'CSS', 'Node.js'],
+    imageId: 'splitgather-project',
+    repoUrl: 'https://github.com/sihilelh/splitgather',
   },
   {
-    title: 'Vehicle Service Station Website',
-    description: 'A website for managing vehicle service bookings. It includes service listings, customer interaction points, and scheduling capabilities, demonstrating full-stack fundamentals.',
-    techStack: ['HTML', 'CSS', 'PHP', 'MySQL'],
-    imageId: 'vehicle-service-project',
+    title: 'Learning Streak Tracker',
+    description: 'Track daily learning hours, topics, and notes with a GitHub-style heatmap visualization. Features real-time statistics and a dark theme UI.',
+    techStack: ['Node.js', 'Express', 'SQLite', 'HTML', 'CSS', 'JavaScript'],
+    imageId: 'heatmap-project',
+    repoUrl: 'https://github.com/xMIRAA/Heat-Map-',
   },
+  {
+    title: 'StarterScope Recommendation MVP',
+    description: 'A business opportunity recommendation web application. Processes user preferences using a weighted scoring algorithm against a dataset to provide personalized recommendations.',
+    techStack: ['Python', 'FastAPI', 'HTML', 'CSS'],
+    imageId: 'starterscope-project',
+    repoUrl: 'https://github.com/xMIRAA/StarterScope',
+  }
 ];
 
 export default function ProjectsSection() {
@@ -30,11 +39,12 @@ export default function ProjectsSection() {
             A glimpse into my hands-on experience building functional web applications.
           </p>
         </div>
-        <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {projectsData.map((project) => {
             const projectImage = PlaceHolderImages.find((img) => img.id === project.imageId);
             return (
-              <Card key={project.title} className="overflow-hidden transition-shadow duration-300 hover:shadow-xl">
+              <a key={project.title} href={project.repoUrl} target="_blank" rel="noopener noreferrer" className="block group outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-xl">
+                <Card className="flex h-full flex-col overflow-hidden transition-all duration-300 group-hover:shadow-xl group-hover:border-primary/50 group-hover:-translate-y-1">
                 {projectImage && (
                   <div className="aspect-video overflow-hidden">
                     <Image
@@ -50,10 +60,10 @@ export default function ProjectsSection() {
                 <CardHeader>
                   <CardTitle className="font-headline text-xl">{project.title}</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex-grow">
                   <p className="text-muted-foreground">{project.description}</p>
                 </CardContent>
-                <CardFooter>
+                <CardFooter className="mt-auto pb-6">
                   <div className="flex flex-wrap gap-2">
                     {project.techStack.map((tech) => (
                       <Badge key={tech} variant="secondary">
@@ -62,7 +72,8 @@ export default function ProjectsSection() {
                     ))}
                   </div>
                 </CardFooter>
-              </Card>
+                </Card>
+              </a>
             );
           })}
         </div>

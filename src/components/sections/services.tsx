@@ -29,17 +29,17 @@ export default function ServicesSection() {
   return (
     <section id="services" className="py-20 md:py-32">
       <div className="container mx-auto px-4">
-        <div className="text-center">
-          <h2 className="font-headline text-3xl font-bold md:text-4xl">
+        <div className="mx-auto max-w-3xl text-center mb-16">
+          <h2 className="font-headline text-3xl font-bold md:text-4xl mb-6">
             What I Can Help With
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
+          <p className="text-muted-foreground md:text-lg leading-relaxed">
             As my skills grow with my academic journey, here are some areas where I can already provide value.
           </p>
         </div>
         <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {servicesData.map((service) => (
-            <Card key={service.title} className="text-center transition-all duration-300 hover:bg-primary/5">
+            <Card key={service.title} className="group text-center overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-primary/50">
               <CardHeader>
                 <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
                   <service.icon className="h-8 w-8 text-primary" />
