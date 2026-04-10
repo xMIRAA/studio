@@ -1,28 +1,27 @@
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const projectsData = [
   {
     title: 'Splitgather',
     description: 'A web application with a frontend and a backend API, built for collaborative sharing and gathering.',
     techStack: ['JavaScript', 'HTML', 'CSS', 'Node.js'],
-    imageId: 'splitgather-project',
+    imageUrl: '/projects/splitgather.png',
     repoUrl: 'https://github.com/sihilelh/splitgather',
   },
   {
     title: 'Learning Streak Tracker',
     description: 'Track daily learning hours, topics, and notes with a GitHub-style heatmap visualization. Features real-time statistics and a dark theme UI.',
     techStack: ['Node.js', 'Express', 'SQLite', 'HTML', 'CSS', 'JavaScript'],
-    imageId: 'heatmap-project',
+    imageUrl: '/projects/streak_tracker.png',
     repoUrl: 'https://github.com/xMIRAA/Heat-Map-',
   },
   {
     title: 'StarterScope Recommendation MVP',
     description: 'A business opportunity recommendation web application. Processes user preferences using a weighted scoring algorithm against a dataset to provide personalized recommendations.',
     techStack: ['Python', 'FastAPI', 'HTML', 'CSS'],
-    imageId: 'starterscope-project',
+    imageUrl: '/projects/starterscope.png',
     repoUrl: 'https://github.com/xMIRAA/StarterScope',
   }
 ];
@@ -41,19 +40,17 @@ export default function ProjectsSection() {
         </div>
         <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {projectsData.map((project) => {
-            const projectImage = PlaceHolderImages.find((img) => img.id === project.imageId);
             return (
               <a key={project.title} href={project.repoUrl} target="_blank" rel="noopener noreferrer" className="block group outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-xl">
                 <Card className="flex h-full flex-col overflow-hidden transition-all duration-300 group-hover:shadow-xl group-hover:border-primary/50 group-hover:-translate-y-1">
-                {projectImage && (
+                {project.imageUrl && (
                   <div className="aspect-video overflow-hidden">
                     <Image
-                      src={projectImage.imageUrl}
-                      alt={projectImage.description}
+                      src={project.imageUrl}
+                      alt={`${project.title} preview`}
                       width={600}
                       height={400}
-                      className="w-full object-cover transition-transform duration-300 hover:scale-105"
-                      data-ai-hint={projectImage.imageHint}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                   </div>
                 )}
