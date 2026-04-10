@@ -7,6 +7,22 @@ export const metadata: Metadata = {
   title: "Mirsadh | Aspiring Business & Data Analyst",
   description:
     'Portfolio of Mohomed Mirsadh, an Information Systems undergraduate at the University of Colombo School of Computing.',
+  keywords: ["Mohomed Mirsadh", "Mirsadh", "Business Analyst", "Data Analyst", "Information Systems", "UCSC", "Sri Lanka", "Portfolio"],
+  authors: [{ name: "Mohomed Mirsadh", url: "https://mirsadh.com" }],
+  creator: "Mohomed Mirsadh",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://mirsadh.com",
+    title: "Mohomed Mirsadh | Aspiring Business & Data Analyst",
+    description: "Portfolio of Mohomed Mirsadh, an Information Systems undergraduate at the University of Colombo School of Computing.",
+    siteName: "Mohomed Mirsadh Portfolio"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mohomed Mirsadh | Aspiring Business & Data Analyst",
+    description: "Portfolio of Mohomed Mirsadh, an Information Systems undergraduate."
+  }
 };
 
 export default function RootLayout({
