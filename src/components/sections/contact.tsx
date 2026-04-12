@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 import { useState } from 'react';
-import emailjs from '@emailjs/browser';
+import { sendContactEmail } from '@/app/actions';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -21,6 +21,13 @@ import { useToast } from '@/hooks/use-toast';
 import { Card, CardContent } from '../ui/card';
 import { Linkedin, Mail, Phone, Loader2 } from 'lucide-react';
 import Link from 'next/link';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -28,6 +35,9 @@ const formSchema = z.object({
   }),
   email: z.string().email({
     message: 'Please enter a valid email address.',
+  }),
+  topic: z.string().min(1, {
+    message: 'Please select a topic.',
   }),
   message: z.string().min(10, {
     message: 'Message must be at least 10 characters.',
@@ -61,46 +71,41 @@ export default function ContactSection() {
     defaultValues: {
       name: '',
       email: '',
+      topic: '',
       message: '',
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
 
-    const serviceId = 'service_ztpxmsv';
-    const templateId = 'template_b1e1h8j';
-    const publicKey = 'YVYGsZgsgQyMYr9bM';
+    try {
+      const result = await sendContactEmail(values);
 
-    const templateParams = {
-      from_name: values.name,
-      from_email: values.email,
-      message: values.message,
-    };
-
-    emailjs
-      .send(serviceId, templateId, templateParams, publicKey)
-      .then(
-        (response) => {
-          console.log('SUCCESS!', response.status, response.text);
-          toast({
-            title: 'Message Sent!',
-            description: "Thank you for reaching out. I'll get back to you soon.",
-          });
-          form.reset();
-        },
-        (error) => {
-          console.error('FAILED...', error);
-          toast({
-            variant: 'destructive',
-            title: 'Uh oh! Something went wrong.',
-            description: 'There was a problem sending your message. Please try again.',
-          });
-        }
-      )
-      .finally(() => {
-        setIsSubmitting(false);
+      if (result.success) {
+        toast({
+          title: 'Message Sent!',
+          description: "Thank you for reaching out. I'll get back to you soon.",
+        });
+        form.reset();
+      } else {
+        // Handle specific server-side errors
+        toast({
+          variant: 'destructive',
+          title: 'Delivery Failed',
+          description: result.error || 'There was a problem sending your message.',
+        });
+      }
+    } catch (error) {
+      console.error('Contact error:', error);
+      toast({
+        variant: 'destructive',
+        title: 'Uh oh! Something went wrong.',
+        description: 'An unexpected error occurred. Please try again.',
       });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -158,6 +163,31 @@ export default function ContactSection() {
                         <FormControl>
                           <Input placeholder="your.email@example.com" {...field} suppressHydrationWarning />
                         </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="topic"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Topic / Project</FormLabel>
+                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="What is this regarding?" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="General">General Inquiry</SelectItem>
+                            <SelectItem value="Auto Care Web">Project: Auto Care Web</SelectItem>
+                            <SelectItem value="Splitgather">Project: Splitgather</SelectItem>
+                            <SelectItem value="Streak Tracker">Project: Learning Streak Tracker</SelectItem>
+                            <SelectItem value="StarterScope">Project: StarterScope Recommendation</SelectItem>
+                            <SelectItem value="Collaboration">Freelance / Collaboration</SelectItem>
+                          </SelectContent>
+                        </Select>
                         <FormMessage />
                       </FormItem>
                     )}
