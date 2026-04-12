@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 import { useState } from 'react';
-import { sendContactEmail } from '@/app/actions';
+import emailjs from '@emailjs/browser';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -80,28 +80,31 @@ export default function ContactSection() {
     setIsSubmitting(true);
 
     try {
-      const result = await sendContactEmail(values);
+      const templateParams = {
+        from_name: values.name,
+        from_email: values.email,
+        topic: values.topic,
+        message: values.message,
+      };
 
-      if (result.success) {
-        toast({
-          title: 'Message Sent!',
-          description: "Thank you for reaching out. I'll get back to you soon.",
-        });
-        form.reset();
-      } else {
-        // Handle specific server-side errors
-        toast({
-          variant: 'destructive',
-          title: 'Delivery Failed',
-          description: result.error || 'There was a problem sending your message.',
-        });
-      }
+      await emailjs.send(
+        'service_ztpxmsv',
+        'template_b1e1h8j',
+        templateParams,
+        'YVYGsZgsgQyMYr9bM'
+      );
+
+      toast({
+        title: 'Message Sent!',
+        description: "Thank you for reaching out. I'll get back to you soon.",
+      });
+      form.reset();
     } catch (error) {
-      console.error('Contact error:', error);
+      console.error('EmailJS error:', error);
       toast({
         variant: 'destructive',
         title: 'Uh oh! Something went wrong.',
-        description: 'An unexpected error occurred. Please try again.',
+        description: 'There was a problem sending your message. Please try again.',
       });
     } finally {
       setIsSubmitting(false);
