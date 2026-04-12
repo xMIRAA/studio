@@ -88,7 +88,7 @@ export default function ContactSection() {
       };
 
       await emailjs.send(
-        'service_ztpxmsv',
+        'service_tdb7qic',
         'template_b1e1h8j',
         templateParams,
         'YVYGsZgsgQyMYr9bM'
