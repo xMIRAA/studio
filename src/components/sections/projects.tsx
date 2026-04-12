@@ -4,6 +4,13 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 
 const projectsData = [
   {
+    title: 'Auto Care Web',
+    description: 'A premium, feature-rich service booking platform for "Classic Auto Care." Features AI-powered vehicle diagnostics via Google Gemini, real-time booking management, and a high-end automotive aesthetic.',
+    techStack: ['React', 'TypeScript', 'Google Gemini AI', 'Vanilla CSS', 'Vite'],
+    imageUrl: '/projects/autocare.png',
+    repoUrl: 'https://github.com/xMIRAA/Auto-care-web',
+  },
+  {
     title: 'Splitgather',
     description: 'A web application with a frontend and a backend API, built for collaborative sharing and gathering.',
     techStack: ['JavaScript', 'HTML', 'CSS', 'Node.js'],
