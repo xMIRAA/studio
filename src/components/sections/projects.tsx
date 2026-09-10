@@ -4,6 +4,14 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 
 const projectsData = [
   {
+    title: 'Clean City',
+    description: 'A waste collection management system for residents and administrators. Users can view collection schedules, request pickups, submit complaints, and manage waste services through role-based dashboards.',
+    techStack: ['PHP', 'MySQL', 'HTML5', 'CSS3', 'JavaScript', 'XAMPP'],
+    imageUrl: '/projects/CleanCity.png',
+    imageFit: 'contain',
+    repoUrl: 'https://github.com/xMIRAA/waste-project',
+  },
+  {
     title: 'Auto Care Web',
     description: 'A premium, feature-rich service booking platform for "Classic Auto Care." Features AI-powered vehicle diagnostics via Google Gemini, real-time booking management, and a high-end automotive aesthetic.',
     techStack: ['React', 'TypeScript', 'Google Gemini AI', 'Vanilla CSS', 'Vite'],
@@ -57,7 +65,7 @@ export default function ProjectsSection() {
                       alt={`${project.title} preview`}
                       width={600}
                       height={400}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      className={`w-full h-full ${project.imageFit === 'contain' ? 'object-contain bg-muted' : 'object-cover'} transition-transform duration-300 group-hover:scale-105`}
                     />
                   </div>
                 )}

@@ -31,7 +31,7 @@ export default function HeroSection() {
           
           <div className="space-y-4">
             <p className="font-headline text-xl font-semibold text-foreground/90 md:text-2xl">
-              Information Systems Undergraduate <br className="hidden md:block"/> & Aspiring Business Analyst
+              Aspiring Business Analyst | Technology & Problem-Solving Enthusiast
             </p>
             <p className="max-w-xl text-muted-foreground md:text-lg leading-relaxed">
               I thrive on blending technical, analytical, and creative skills to solve complex problems. Passionate about data analytics, IT management, and driving innovation.
